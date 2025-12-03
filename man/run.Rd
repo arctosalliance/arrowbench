@@ -37,7 +37,7 @@ Run an object
 
 \itemize{
 \item \code{CONBENCH_URL}: Required. The URL of the Conbench server with no trailing
-slash. For arrow, should be \verb{https://conbench.ursa.dev}.
+slash. For arrow, should be \verb{https://conbench.arrow-dev.org}.
 \item \code{CONBENCH_EMAIL}: The email to use for Conbench login. Only required if the
 server is private.
 \item \code{CONBENCH_PASSWORD}: The password to use for Conbench login. Only required

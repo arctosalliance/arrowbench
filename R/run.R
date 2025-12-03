@@ -30,7 +30,7 @@ run.default <- function(x, ...) {
 #' @section Environment Variables:
 #'
 #' - `CONBENCH_URL`: Required. The URL of the Conbench server with no trailing
-#' slash. For arrow, should be `https://conbench.ursa.dev`.
+#' slash. For arrow, should be `https://conbench.arrow-dev.org`.
 #' - `CONBENCH_EMAIL`: The email to use for Conbench login. Only required if the
 #' server is private.
 #' - `CONBENCH_PASSWORD`: The password to use for Conbench login. Only required

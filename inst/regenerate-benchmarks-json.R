@@ -1,7 +1,7 @@
 "
 This script regenerates inst/benchmarks.json with all current benchmarks. That
 file is used by arrow-benchmarks-ci here:
-https://github.com/voltrondata-labs/arrow-benchmarks-ci/blob/main/buildkite/benchmark/run.py
+https://github.com/arctosalliance/arrow-benchmarks-ci/blob/main/buildkite/benchmark/run.py
 to keep track of benchmarks available in a repository.
 "
 

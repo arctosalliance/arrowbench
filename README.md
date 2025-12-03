@@ -1,7 +1,7 @@
 # arrowbench
 
   <!-- badges: start -->
-  [![R-CMD-check](https://github.com/voltrondata-labs/arrowbench/workflows/R-CMD-check/badge.svg)](https://github.com/ursa-labs/arrowbench/actions)
+  [![R-CMD-check](https://github.com/arctosalliance/arrowbench/workflows/R-CMD-check/badge.svg)](https://github.com/arctosalliance/arrowbench/actions)
   <!-- badges: end -->
 
 This R package contains tools for defining benchmarks, running them across a 
@@ -31,7 +31,7 @@ Among the features that this package adds are
 ## Installation
 
 The quickest and easiest way to install is to run 
-`remotes::install_github("voltrondata-labs/arrowbench", dependencies = TRUE)` in R. If you need to install 
+`remotes::install_github("arctosalliance/arrowbench", dependencies = TRUE)` in R. If you need to install 
 remotes you can `install.packages("remotes")`.
 
 If you've downloaded the source, or you're making changes to arrow bench you 
@@ -269,14 +269,14 @@ sending to a Conbench server.
 
 ### Enabling benchmarks to be run on conbench
 
-[Conbench](https://conbench.ursa.dev/) is a service that runs benchmarks continuously on a repo. We have a conbench
+[Conbench](https://conbench.arrow-dev.org/) is a service that runs benchmarks continuously on a repo. We have a conbench
 service setup to run benchmarks on the apache/arrow repository (and pull requests, 
 if requested).
 
 Before a benchmark can be run on conbench, one must add a (or extend an existing)
-benchmark in the [benchmarks python package](https://github.com/voltrondata-labs/benchmarks).
-If you are adding a new benchmark [see the R-only example external benchmarks](https://github.com/voltrondata-labs/benchmarks#example-external-benchmarks) 
-in benchmarks. An example of adding an R-only benchmark is [benchmarks#14](https://github.com/voltrondata-labs/benchmarks/pull/14)
+benchmark in the [benchmarks python package](https://github.com/arctosalliance/benchmarks).
+If you are adding a new benchmark [see the R-only example external benchmarks](https://github.com/arctosalliance/benchmarks#example-external-benchmarks) 
+in benchmarks. An example of adding an R-only benchmark is [benchmarks#14](https://github.com/arctosalliance/benchmarks/pull/14)
 
 ## Known data sources and versions
 

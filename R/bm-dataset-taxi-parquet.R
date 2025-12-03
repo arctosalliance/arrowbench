@@ -25,7 +25,7 @@ dataset_taxi_parquet <- Benchmark("partitioned-dataset-filter",
     query$assert(result)
   },
   tags_fun = function(params) {
-    # to reproduce this: https://github.com/voltrondata-labs/benchmarks/blob/main/benchmarks/partitioned_dataset_filter_benchmark.py#L23
+    # to reproduce this: https://github.com/arctosalliance/benchmarks/blob/main/benchmarks/partitioned_dataset_filter_benchmark.py#L23
     params$dataset <- "dataset-taxi-parquet"
     params
   },
