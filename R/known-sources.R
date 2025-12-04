@@ -54,50 +54,50 @@ fanniemae_schema <- function() {
 #' @export
 known_sources <- list(
   fanniemae_2016Q4 = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/fanniemae_loanperf/2016Q4.csv.gz",
+    url = "https://arrow-data.s3.amazonaws.com/qa/fanniemae_loanperf/2016Q4.csv.gz",
     schema = fanniemae_schema(),
     reader = function(file, ...) arrow::read_delim_arrow(file, delim = "|", schema = fanniemae_schema(), ...),
     delim = "|",
     dim = c(22180168L, 31L)
   ),
   `nyctaxi_2010-01` = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/nyctaxi/yellow_tripdata_2010-01.csv.gz",
+    url = "https://arrow-data.s3.amazonaws.com/qa/nyctaxi/yellow_tripdata_2010-01.csv.gz",
     reader = function(file, ...) arrow::read_csv_arrow(file, ...),
     delim = ",",
     dim = c(14863778L, 18L)
   ),
   chi_traffic_2020_Q1 = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/chitraffic/chi_traffic_2020_Q1.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/chitraffic/chi_traffic_2020_Q1.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(13038291L, 23L)
   ),
   type_strings = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_strings.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_strings.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 5L)
   ),
   type_dict = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_dict.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_dict.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 5L)
   ),
   type_integers = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_integers.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_integers.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 5L)
   ),
   type_floats = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_floats.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_floats.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 5L)
   ),
   type_nested = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_nested.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_nested.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 4L)
   ),
   type_simple_features = list(
-    url = "https://apache-arrow-qa.s3.amazonaws.com/single_types/type_simple_features.parquet",
+    url = "https://arrow-data.s3.amazonaws.com/qa/single_types/type_simple_features.parquet",
     reader = function(file, ...) arrow::read_parquet(file, ...),
     dim = c(1000000L, 5L)
   ),
@@ -196,9 +196,9 @@ known_datasets <- list(
     n_files = 12L
   ),
   taxi_parquet = list(
-    url = "s3://apache-arrow-taxi-data",
+    url = "s3://arrow-data/taxi-data",
     download = function(path) {
-      arrow::copy_files("s3://apache-arrow-taxi-data", path)
+      arrow::copy_files("s3://arrow-data/taxi-data", path)
       invisible(path)
     },
     open = function(paths) {
@@ -208,7 +208,7 @@ known_datasets <- list(
     n_files = 125
   ),
   taxi_file_list_parquet = list(
-    url = "s3://apache-arrow-taxi-data",
+    url = "s3://arrow-data/taxi-data",
     files = c(
       "/2009/01/data.parquet",
       "/2009/02/data.parquet"
@@ -230,7 +230,7 @@ known_datasets <- list(
     dim = c(27472535L, 18L) # TODO: fix
   ),
   taxi_file_list_feather = list(
-    url = "s3://apache-arrow-taxi-data-ipc",
+    url = "s3://arrow-data/taxi-data-ipc",
     files = c(
       "/2013/01/data.feather",
       "/2013/02/data.feather"
