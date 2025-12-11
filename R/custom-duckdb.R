@@ -74,7 +74,35 @@ export_custom_duckdb <- function(sql, sink, dbdir = ":memory:") {
 }
 
 install_duckdb_tpch <- function() {
+  # First, clear any stale cached extensions that might cause version mismatch
+  duckdb_ext_dir <- file.path(Sys.getenv("HOME"), ".duckdb", "extensions")
+  if (dir.exists(duckdb_ext_dir)) {
+    unlink(duckdb_ext_dir, recursive = TRUE)
+    message("Cleared stale DuckDB extensions cache")
+  }
+  
   con <- DBI::dbConnect(duckdb::duckdb())
-  on.exit(DBI::dbDisconnect(con))
-  DBI::dbExecute(con, "INSTALL tpch; LOAD tpch;")
+  on.exit(DBI::dbDisconnect(con, shutdown = TRUE))
+  
+  # Force update from the correct repository for this DuckDB version
+  tryCatch({
+    DBI::dbExecute(con, "FORCE INSTALL tpch;")
+    DBI::dbExecute(con, "LOAD tpch;")
+  }, error = function(e) {
+    # If FORCE INSTALL fails, try regular install
+    # (works when extension is bundled with DuckDB)
+    tryCatch({
+      DBI::dbExecute(con, "INSTALL tpch;")
+      DBI::dbExecute(con, "LOAD tpch;")
+    }, error = function(e2) {
+      rlang::abort(
+        paste0(
+          "Failed to install DuckDB TPCH extension. ",
+          "This may be due to a DuckDB version mismatch. ",
+          "Try installing the latest stable DuckDB: install.packages('duckdb')\n",
+          "Original error: ", conditionMessage(e2)
+        )
+      )
+    })
+  })
 }
