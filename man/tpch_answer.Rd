@@ -8,7 +8,7 @@ tpch_answer(
   scale_factor,
   query_id,
   source = c("arrowbench", "duckdb"),
-  data_source = c("duckdb", "dbgen")
+  data_source = NULL
 )
 }
 \arguments{
@@ -20,8 +20,10 @@ tpch_answer(
 return answers for scale_factor 1.}
 
 \item{data_source}{which source of data should we construct ansers for? "duckdb"
-(the default) has a slightly different set of data in the *_address columns
-compared to "dbgen"}
+is data from DuckDB < 2.0, which has a slightly different set of data in the
+*_address and *_comment columns compared to "dbgen". DuckDB >= 2.0 generates
+the same data as "dbgen". The default (\code{NULL}) picks the one that matches the
+installed version of DuckDB.}
 }
 \value{
 the answer, as a data.frame

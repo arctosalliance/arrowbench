@@ -47,6 +47,18 @@ test_that("tpch_answer (arrowbench)", {
   expect_s3_class(q22_ans, "tbl_df")
 })
 
+test_that("tpch_answer (arrowbench) defaults to the answers for the installed duckdb", {
+  expected <- if (packageVersion("duckdb") >= "2.0.0") "dbgen" else "duckdb"
+  expect_identical(default_tpch_data_source(), expected)
+
+  # q02 includes s_address, which differs between the two data sources
+  expect_identical(tpch_answer(0.01, 2), tpch_answer(0.01, 2, data_source = expected))
+  expect_false(identical(
+    tpch_answer(0.01, 2, data_source = "duckdb"),
+    tpch_answer(0.01, 2, data_source = "dbgen")
+  ))
+})
+
 # don't test if we are not already trying to install the custom duckdb
 skip_if(Sys.getenv("ARROWBENCH_TEST_CUSTOM_DUCKDB", "") == "")
 

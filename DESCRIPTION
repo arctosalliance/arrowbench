@@ -1,7 +1,7 @@
 Package: arrowbench
 Type: Package
 Title: Tools for Continuous and Interactive Benchmarking
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Neal", "Richardson", email = "neal.p.richardson@gmail.com", role = "aut"),
     person("Jonathan", "Keane", email = "jkeane@gmail.com", role = c("aut", "cre")),
