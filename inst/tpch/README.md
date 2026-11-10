@@ -8,3 +8,5 @@ https://github.com/databricks/tpch-dbgen/blob/6985da461c641fd0d255b214f2d693f1bf
 https://github.com/duckdb/duckdb/blob/c0a4ab96c626426961c207f49c19aa81448e91da/extension/tpch/dbgen/answers/sf1/q02.csv
 
 Additionally, DuckDB >= 0.8 has also changed slightly some of the `s_comment` columns. This doesn't impact queries themselves, but [the answers changed](https://github.com/duckdb/duckdb/pull/6535). Note the answer differences before PR #136.
+
+DuckDB >= 2.0 generates data that matches the reference `dbgen`, so the answers in `answers` are used with it. `tpch_answer()` picks the answers that match the installed version of DuckDB; the `answers_duckdb_data` answers are only needed with DuckDB < 2.0.
